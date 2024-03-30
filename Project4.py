@@ -23,13 +23,12 @@ def iterative_F(n):
             f_prev = f_curr
         return f_curr
 
-def compare_ex_time():
-    n_values = [int(input(f'Введите 5 натуральных чисел : {_+1}')) for _ in range(5)]  
-
+def compare_ex_time(list):
+    
     recursive_times = []
     iterative_times = []
 
-    for n in n_values:
+    for n in list:
         start_time = time.time()
         recursive_result = recursive_F(n)
         end_time = time.time()
@@ -45,8 +44,8 @@ def compare_ex_time():
     print("\nСравнение времени выполнения (в секундах):")
     print(" n   | Рекурсивно | Итерационно")
     print("--------------------------------")
-    for i in range(len(n_values)):
-        print(f"{n_values[i]:3}  | {recursive_times[i]:10f} | {iterative_times[i]:11f}")
+    for i in range(len(list)):
+        print(f"{list[i]:3}  | {recursive_times[i]:10f} | {iterative_times[i]:11f}")
 
     import matplotlib.pyplot as plt
 
@@ -58,4 +57,9 @@ def compare_ex_time():
     plt.legend()
     plt.show()
 
-compare_ex_time()
+def main():
+    n_values = [int(input(f'Введите 5 натуральных чисел : {_+1}')) for _ in range(5)]
+    compare_ex_time(n_values)
+    
+if __name__ == '__main__':
+    main()
