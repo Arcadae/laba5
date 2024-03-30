@@ -49,8 +49,8 @@ def compare_ex_time(list):
 
     import matplotlib.pyplot as plt
 
-    plt.plot(n_values, recursive_times, label='Рекурсивно')
-    plt.plot(n_values, iterative_times, label='Итерационно')
+    plt.plot(list, recursive_times, label='Рекурсивно')
+    plt.plot(list, iterative_times, label='Итерационно')
     plt.xlabel('Значение n')
     plt.ylabel('Время выполнения (секунды)')
     plt.title('Сравнение времени выполнения рекурсивного и итерационного подходов')
