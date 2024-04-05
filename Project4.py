@@ -4,6 +4,7 @@
 
 import timeit
 from functools import lru_cache
+import matplotlib.pyplot as plt
 
 @lru_cache(maxsize = 1000)
 def factorial(n):
