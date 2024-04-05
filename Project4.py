@@ -2,14 +2,21 @@
 #Результаты сравнительного исследования времени вычисления представить в табличной и графической форме.
 #ВАРИАНТ 20: F(1) = 1, F(2) = 1, F(n) = (-1)n*(F(n-2)/(2n)!), при n > 2
 
-import time
-import math
+import timeit
+from functools import lru_cache
+
+@lru_cache(maxsize = 1000)
+def factorial(n):
+    result = 1
+    for _ in range(1,n+1):
+        result *= _ 
+    return result
 
 def recursive_F(n):
     if n == 1 or n == 2:
         return 1
     else:
-        return ((-1)**n) * (recursive_F(n - 2) / math.factorial(2 * n))
+        return ((-1)**n) * (recursive_F(n - 2) / factorial(2 * n))
 
 def iterative_F(n):
     if n == 1 or n == 2:
@@ -18,7 +25,7 @@ def iterative_F(n):
         f_prev_prev = 1
         f_prev = 1
         for i in range(3, n + 1):
-            f_curr = ((-1)**i) * (f_prev_prev / math.factorial(2 * i))
+            f_curr = ((-1)**i) * (f_prev_prev / factorial(2 * i))
             f_prev_prev = f_prev
             f_prev = f_curr
         return f_curr
@@ -29,15 +36,13 @@ def compare_ex_time(list):
     iterative_times = []
 
     for n in list:
-        start_time = time.time()
+        start_time = timeit.default_timer()
         recursive_result = recursive_F(n)
-        end_time = time.time()
-        recursive_times.append(end_time - start_time)
+        recursive_times.append(timeit.default_timer() - start_time)
 
-        start_time = time.time()
+        start_time = timeit.default_timer()
         iterative_result = iterative_F(n)
-        end_time = time.time()
-        iterative_times.append(end_time - start_time)
+        iterative_times.append(timeit.default_timer() - start_time)
 
         print(f"n = {n}: Recursive F(n) = {recursive_result}, Iterative F(n) = {iterative_result}")
 
