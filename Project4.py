@@ -67,7 +67,7 @@ def compare_ex_time(list):
     plt.show()
 
 def main():
-    n_values = [int(input(f'Введите 5 натуральных чисел : {_+1}')) for _ in range(5)]
+    n_values = [int(input(f'Введите 3 натуральных чисел : {_+1}')) for _ in range(3)]
     compare_ex_time(n_values)
     
 if __name__ == '__main__':
