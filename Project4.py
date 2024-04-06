@@ -10,10 +10,10 @@ import matplotlib.pyplot as plt
 
 @lru_cache(maxsize = 1000)
 def factorial(n):
-    result = 1
-    for _ in range(1,n+1):
-        result *= _ 
-    return result
+    if n == 0:
+        return 1
+    else:
+        return n*factorial(n-1)
 
 def recursive_F(n):
     if n == 1 or n == 2:
