@@ -28,8 +28,9 @@ def iterative_F(n):
         f_prev_prev = 1
         f_prev = 1
         for i in range(3, n + 1):
-            f_curr = ((-1)**i) * (f_prev_prev / factorial(2 * i))
-            f_prev_prev = f_prev
+            f_prev_prev *= -1
+            f_curr = (f_prev_prev / factorial(2 * i))
+            f_prev_prev = f_prev*(-1)
             f_prev = f_curr
         return f_curr
 
