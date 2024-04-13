@@ -19,7 +19,10 @@ def recursive_F(n):
     if n == 1 or n == 2:
         return 1
     else:
-        return ((-1)**n) * (recursive_F(n - 2) / factorial(2 * n))
+        if n%2==0: 
+            return (recursive_F(n - 2) / factorial(2 * n))
+        else:
+            return (-1)*(recursive_F(n - 2) / factorial(2 * n))
 
 def iterative_F(n):
     if n == 1 or n == 2:
