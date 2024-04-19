@@ -15,24 +15,31 @@ def factorial(n):
     else:
         return n*factorial(n-1)
 
+def is_number_even(n):
+    if n%2 != 0:
+        c = (-1)
+    else:
+        c = 1 
+    return c
+
 def recursive_F(n):
+    c = is_number_even(n)
     if n == 1 or n == 2:
         return 1
     else:
-        if n%2==0: 
-            return (recursive_F(n - 2) / factorial(2 * n))
-        else:
-            return (-1)*(recursive_F(n - 2) / factorial(2 * n))
+        return ((recursive_F(n - 2) / factorial(2 * n))*c)
 
 def iterative_F(n):
+    c = 1
     if n == 1 or n == 2:
         return 1
     else:
         f_prev_prev = 1
         f_prev = 1
         for i in range(3, n + 1):
-            f_curr = (f_prev_prev / factorial(2 * i))*(-1)
-            f_prev_prev = f_prev*(-1)
+            c *= (-1)
+            f_curr = (f_prev_prev / factorial(2 * i))*c
+            f_prev_prev = f_prev
             f_prev = f_curr
         return f_curr
 
